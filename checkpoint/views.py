@@ -4,4 +4,4 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def home(request):
-    return HttpResponse("Hello, this is the home page of the checkpoint app!")
+    return render(request, "checkpoint/home.html")
