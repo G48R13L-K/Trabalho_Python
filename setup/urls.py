@@ -16,11 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from checkpoint.views import home
+from checkpoint.views import home, itens_cadastro, cadastroUsuarios, locacoesRegistro
+
 
 import checkpoint
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
+    path('itens_cadastro/', itens_cadastro, name='itens_cadastro'),
+    path('cadastroUsuarios/', cadastroUsuarios, name='cadastroUsuarios'),
+    path('locacoesRegistro/', locacoesRegistro, name='locacoesRegistro'),
+    path('registro')
 ]
