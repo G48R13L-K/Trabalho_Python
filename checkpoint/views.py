@@ -6,7 +6,7 @@ from django.http import HttpResponse
 def home(request):
     return render(request, "checkpoint/home.html")
 
-def itens_cadastro(request):
+def equipamentos(request):
     if request.method == "POST":
         id = request.POST.get("id")
         nome = request.POST.get("nome")
