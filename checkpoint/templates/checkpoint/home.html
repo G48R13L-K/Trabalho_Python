@@ -1,8 +1,28 @@
 {% extends "checkpoint/base.html" %}
 
-
-
 {% block content %}
 
+<main class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow border-0">
+                <div class="card-body p-5">
+                    <h2 class="text-secondary mb-4">Status do Sistema</h2>
+
+                    <div class="alert alert-success d-flex align-items-center" role="alert">
+                        <div>
+                            <strong>Sucesso!</strong> O servidor está conectado.
+                        </div>
+                    </div>
+</main>
+
+
+
+
+
+{% block check %}
+<div class="text-center py-4 text-muted">
+    <small>&copy; 2026 - CheckPoint® </small>
+</div>
 
 {% endblock %}
