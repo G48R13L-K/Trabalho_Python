@@ -20,3 +20,5 @@ def editar_equipamento(request, id):
 def excluir_equipamento(request, id):
     return render(request, "checkpoint/excluir_equipamento.html", {"id": id})
 
+def itens_cadastro(request):
+    return render(request, "checkpoint/itens_cadastro.html")

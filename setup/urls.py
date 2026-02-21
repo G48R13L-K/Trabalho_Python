@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from checkpoint.views import home, equipamentos
 from checkpoint.views import editar_equipamento
-from checkpoint.views import excluir_equipamento
+from checkpoint.views import excluir_equipamento, itens_cadastro
 
 
 
@@ -30,5 +30,5 @@ urlpatterns = [
     path('equipamentos/', equipamentos, name='equipamentos'),
     path('editar_equipamento/<int:id>/', editar_equipamento, name='editar_equipamento'),
     path('excluir_equipamento/<int:id>/', excluir_equipamento, name='excluir_equipamento'),
-
-]
+    path('itens_cadastro/', itens_cadastro, name='itens_cadastro'),
+    ]
