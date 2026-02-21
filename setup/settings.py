@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-b+^&-#n2=n!p@e6)%4@dek)g^ft=rm-)6d4$_^qjl04ehx=q0p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -116,3 +116,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_URL = "/static/"
+
+LOGIN_URL = '/admin/login/' # Onde o usuário faz login
+LOGIN_REDIRECT_URL = '/'   # Para onde ele vai depois de logar
+LOGOUT_REDIRECT_URL = '/admin/login/' # Para onde vai ao sair

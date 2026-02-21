@@ -32,5 +32,18 @@
                     <a href="{% url 'editar_equipamento' equipamento.id %}" class="btn btn-sm btn-outline-primary">
                         Editar
                     </a>
+                              <form method="post" action="{% url 'excluir_equipamento' equipamento.id %}"
+                                                style="display:inline;">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                        🗑 Fechar
+                                                </button>
+                                        </form>
+                                </td>
+                        </tr>
+                        {% endfor %}
+                </tbody>
+        </table>
+</div>
 
                     {% endblock %}
