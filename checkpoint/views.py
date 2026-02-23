@@ -13,6 +13,7 @@ def equipamentos(request):
         status = request.POST.get("status")
 
         id_equipamento = request.POST.get("equipamentos")
+    return render(request, 'checkpoint/equipamentos.html')
 
 def editar_equipamento(request, id):
     return render(request, "checkpoint/editar_equipamento.html", {"id": id})
