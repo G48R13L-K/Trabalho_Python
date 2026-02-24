@@ -16,7 +16,7 @@ def equipamentos(request):
         status = request.POST.get("status")
         Equipamentos.objects.create(nomeEquipamento=nomeEquipamento,numeroEquipamento=numeroEquipamento,status=status)
         messages.success(request,"Equipamento cadastrado com sucesso!")
-        return redirect('itens_cadastro.html')
+        return redirect('itens_cadastro')
         
     return render(request, 'checkpoint/equipamentos.html')
     
@@ -43,5 +43,6 @@ def cadastro_usuario(request):
     return render(request, "checkpoint/cadastro_usuario.html")
 
 def itens_cadastro(request):
-    return render(request, "checkpoint/itens_cadastro.html")
+    equipamentos = Equipamentos.objects.all()
+    return render(request, "checkpoint/itens_cadastro.html", {"equipamentos": equipamentos})
 
