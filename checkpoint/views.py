@@ -11,12 +11,15 @@ def home(request):
 
 def equipamentos(request):
     if request.method == "POST":
-        numeroEquipamento = request.POST.get("numeroEquipamento")
         nomeEquipamento = request.POST.get("nomeEquipamento")
+        numeroEquipamento = request.POST.get("numeroEquipamento")
         status = request.POST.get("status")
+        Equipamentos.objects.create(nomeEquipamento=nomeEquipamento,numeroEquipamento=numeroEquipamento,status=status)
         messages.success(request,"Equipamento cadastrado com sucesso!")
-        Equipamentos.objects.create(numeroEquipamento=numeroEquipamento,nomeEquipamento=nomeEquipamento,status=status) == request.POST.get("equipamentos")
+        return redirect('itens_cadastro.html')
+        
     return render(request, 'checkpoint/equipamentos.html')
+    
 
 
 
