@@ -11,7 +11,6 @@ class Equipamentos(models.Model):
         ]
     status = models.CharField(max_length=20, choices=opcoesStatus, default='Novo')
     
-    status = models.IntegerField()
 
     def __str__(self):
         return f"{self.nomeEquipamento} - {self.numeroEquipamento} -{self.status}"

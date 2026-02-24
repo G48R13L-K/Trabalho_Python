@@ -37,8 +37,8 @@ def excluir_equipamento(request, id):
     # return redirect("checkpoint:equipamentos")
 
 def cadastro_usuario(request):
-    return render()
+    return render(request, "checkpoint/cadastro_usuario.html")
 
 def itens_cadastro(request):
-    return render()
+    return render(request, "checkpoint/itens_cadastro.html")
 
