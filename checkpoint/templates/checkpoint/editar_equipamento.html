@@ -1,0 +1,42 @@
+{% extends "checkpoint/base.html" %}
+
+
+
+{% block content %}
+
+<div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">Cadastro de Equipamentos</h4>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Nome do Console:</label>
+                <input type="text" name="nomeEquipamento" class="form-control" placeholder="Ex: PlayStation 5" value="{{ equipamento.nomeEquipamento }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Numero do Equipamento/:</label>
+                <input type="text" name="numeroEquipamento" class="form-control" placeholder="Ex: 001, 002, etc." 
+                    value="{{ equipamento.numeroEquipamento }}" required>
+            </div>
+            <div>
+                <label class="form-label fw-bold">Status:</label>
+                <select name="status" class="form-select" value="{{ equipamento.status }}" required> 
+                    <option value="">Selecione o status</option>
+                    <option value="Disponivel">Disponível</option>
+                    <option value="Indisponivel">Indisponível</option>
+                    <option value="Manutencao">Em Manutenção</option>
+                </select>
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-success btn-lg">Salvar Console</button>
+            </div>
+
+
+
+
+            {% endblock %}
