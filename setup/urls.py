@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from checkpoint.views import home, equipamentos, editar_equipamento, excluir_equipamento, itens_cadastro
+from checkpoint.views import home, equipamentos, editar_equipamento, excluir_equipamento, itens_cadastro, listar_locacao
 
 
 
@@ -30,5 +30,5 @@ urlpatterns = [
     # path('cadastro_usuario/', cadastro_usuario, name='cadastro_usuario'),
     path('equipamentos/', equipamentos, name='equipamentos'),
     path('itens_cadastro/', itens_cadastro, name='itens_cadastro'),
-    
+    path('listar_locacao/', listar_locacao, name='listar_locacao'),
     ]

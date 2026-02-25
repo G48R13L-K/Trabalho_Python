@@ -15,19 +15,14 @@ class Equipamentos(models.Model):
     def __str__(self):
         return f"{self.nomeEquipamento} - {self.numeroEquipamento} -{self.status}"
 
-class Usuarios(models.Model):
-    nomeUsuario = models.CharField(max_length=100)
-    senha = models.CharField(max_length=12)
-    cpf = models.IntegerField()
-    def __str__(self):
-        return f"{self.nomeUsuario} - {self.senha} -{self.cpf}"
 
 class Locacao(models.Model):
     equipamento = models.ForeignKey(Equipamentos, on_delete=models.SET_NULL, null=True)
-    usuario = models.ForeignKey(Usuarios, on_delete=models.SET_NULL, null=True)
+    nomeCliente = models.CharField(max_length=100)
+    cpfCliente = models.CharField(max_length=14, null=True, blank=True)
     dataLocacao = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.equipamento} - {self.usuario} -{self.dataLocacao}"
+        return f"{self.equipamento} - {self.nomeCliente} - {self.cpfCliente} -{self.dataLocacao}"
 
     

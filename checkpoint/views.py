@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Equipamentos
+from .models import Equipamentos, Locacao
 from django.contrib import messages
 
 
@@ -46,3 +46,6 @@ def itens_cadastro(request):
     equipamentos = Equipamentos.objects.all()
     return render(request, "checkpoint/itens_cadastro.html", {"equipamentos": equipamentos})
 
+def listar_locacao(request):
+    locacoes = Locacao.objects.all()
+    return render(request, "checkpoint/listar_locacao.html", {"locacoes": locacoes})
