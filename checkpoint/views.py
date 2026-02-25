@@ -46,3 +46,6 @@ def itens_cadastro(request):
     equipamentos = Equipamentos.objects.all()
     return render(request, "checkpoint/itens_cadastro.html", {"equipamentos": equipamentos})
 
+def login(request):
+    return render(request, "checkpoint/login.html")
+
