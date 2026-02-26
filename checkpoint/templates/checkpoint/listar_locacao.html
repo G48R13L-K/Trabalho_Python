@@ -1,0 +1,39 @@
+{% extends "checkpoint/base.html" %}
+
+
+
+{% block content %}
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="text-primary mb-4">Registros de Locações</h1>
+    </div>
+    <table class="table table-striped table-hover shadow-sm bg-white">
+        <thead class="table-dark">
+            <tr>
+                <th>Equipamento</th>
+                <th>Nome Cliente</th>
+                <th>CPF Cliente</th>
+                <th>Data Locação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for locacao in locacoes %}
+            <tr>
+                <td>{{ locacao.equipamento }}</td>
+                <td>{{ locacao.nomeCliente }}</td>
+                <td>{{ locacao.cpfCliente }}</td>
+                <td>{{ locacao.dataLocacao }}</td>
+            </tr>
+            {% if not locacoes %}
+            <span class="badge bg-primary">Nenhuma locação registrada</span>
+            {% endif %}
+            </td>
+            </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}
