@@ -56,3 +56,30 @@ def listar_locacao(request):
 
 def home_funcionario(request):
     return render(request, "checkpoint/home_funcionario.html")
+
+def reservar(request):
+    equipamentos = Equipamentos.objects.filter(status='Disponivel')
+    if request.method == "POST":
+        equipamento = request.POST.get('equipamento')
+        nomeCliente = request.POST.get('nomeCliente')
+        cpfCliente = request.POST.get('cpfCliente')
+
+        equipamento = Equipamentos.objects.get(id=equipamento)
+        Locacao.objects.create(equipamento=equipamento, nomeCliente=nomeCliente, cpfCliente=cpfCliente)
+        
+        equipamento.status = 'Indisponivel'
+        equipamento.save()
+
+        messages.success(request,"Equipamento reservado com sucesso!")
+        return redirect('home')
+    
+    return render(request, "checkpoint/reservar.html", {"equipamentos": equipamentos})
+
+def encerrar_locacao(request, id):
+    locacao = Locacao.objects.get(id=id)
+    if request.method == "POST":
+        equipamento = locacao.equipamento
+        equipamento.status = 'Disponivel'
+        equipamento.save()
+        messages.success(request,"Locação encerrada com sucesso!")
+        return redirect('listar_locacao')
