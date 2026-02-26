@@ -23,13 +23,25 @@
                 <td>{{ locacao.nomeCliente }}</td>
                 <td>{{ locacao.cpfCliente }}</td>
                 <td>{{ locacao.dataLocacao }}</td>
+                <td>
+                    <form method="post" action="{% url 'encerrar_locacao' locacao.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-outline-danger"
+                            onclick="return confirm('Tem certeza que deseja encerrar esta locação?')">
+                            🗑 Encerrar
+                        </button>
+                    </form>
+                
+                
             </tr>
             {% if not locacoes %}
-            <span class="badge bg-primary">Nenhuma locação registrada</span>
-            {% endif %}
-            </td>
-            </td>
+            <tr>
+                <td colspan="4" class="text-center text-muted">Nenhuma locação registrada</td>
             </tr>
+            {% endif %}
+
+           
+            
             {% endfor %}
         </tbody>
     </table>

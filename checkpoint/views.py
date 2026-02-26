@@ -79,3 +79,12 @@ def reservar(request):
         return redirect('home')
     
     return render(request, "checkpoint/reservar.html", {"equipamentos": equipamentos})
+
+def encerrar_locacao(request, id):
+    locacao = Locacao.objects.get(id=id)
+    if request.method == "POST":
+        equipamento = locacao.equipamento
+        equipamento.status = 'Disponivel'
+        equipamento.save()
+        messages.success(request,"Locação encerrada com sucesso!")
+        return redirect('listar_locacao')
