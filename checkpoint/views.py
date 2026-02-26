@@ -24,9 +24,6 @@ def equipamentos(request):
         
     return render(request, 'checkpoint/equipamentos.html')
     
-
-
-
 def editar_equipamento(request, id):
     equipamentos = Equipamentos.objects.get(id=id)
     if request.method == "POST":
@@ -48,8 +45,6 @@ def excluir_equipamento(request, id):
     return render(request, "checkpoint/excluir_equipamento.html", {"id": id})
     # return redirect("checkpoint:equipamentos")
 
-def cadastro_usuario(request):
-    return render(request, "checkpoint/cadastro_usuario.html")
 
 def itens_cadastro(request):
     equipamentos = Equipamentos.objects.all()

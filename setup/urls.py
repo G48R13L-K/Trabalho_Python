@@ -27,7 +27,6 @@ urlpatterns = [
     path('home/', home),
     path('editar_equipamento/<int:id>/', editar_equipamento, name='editar_equipamento'),
     path('excluir_equipamento/<int:id>/', excluir_equipamento, name='excluir_equipamento'),
-    # path('cadastro_usuario/', cadastro_usuario, name='cadastro_usuario'),
     path('equipamentos/', equipamentos, name='equipamentos'),
     path('itens_cadastro/', itens_cadastro, name='itens_cadastro'),
     path('listar_locacao/', listar_locacao, name='listar_locacao'),
