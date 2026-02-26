@@ -54,3 +54,6 @@ def itens_cadastro(request):
 def listar_locacao(request):
     locacoes = Locacao.objects.all()
     return render(request, "checkpoint/listar_locacao.html", {"locacoes": locacoes})
+
+def home_funcionario(request):
+    return render(request, "checkpoint/home_funcionario.html")

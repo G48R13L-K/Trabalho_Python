@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from checkpoint.views import home, equipamentos, editar_equipamento, excluir_equipamento, itens_cadastro, listar_locacao
-
+from checkpoint.views import home_funcionario
 
 
 
@@ -31,4 +31,5 @@ urlpatterns = [
     path('equipamentos/', equipamentos, name='equipamentos'),
     path('itens_cadastro/', itens_cadastro, name='itens_cadastro'),
     path('listar_locacao/', listar_locacao, name='listar_locacao'),
+    path('home_funcionario/', home_funcionario, name='home_funcionario'),
     ]
