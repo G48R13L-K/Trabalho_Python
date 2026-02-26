@@ -1,19 +1,46 @@
 {% extends "checkpoint/base.html" %}
 
-
 {% block content %}
 <main class="container my-5">
+    <h2 class="text-secondary mb-4">Status do Sistema</h2>
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow border-0">
-                <div class="card-body p-5">
-                    <h2 class="text-secondary mb-4">Status do Sistema</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
 
-                    <div class="alert alert-success d-flex align-items-center" role="alert">
-                        <div>
-                            <strong>Sucesso!</strong> O servidor está conectado.
-                       
-                    </div>
+    {% for equipamento in equipamentos %}
+
+    <div class="col">
+        <div class="card shadow-sm h-100 d-flex flex-column">
+
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    {{ equipamento.nomeEquipamento }}
+                </h5>
+
+                <p>
+                    Número: {{ equipamento.numeroEquipamento }}
+                </p>
+
+                <strong>Status:</strong>
+
+                {% if equipamento.status == "Disponivel" %}
+                    <span class="badge bg-success">Disponível</span>
+                {% else %}
+                    <span class="badge bg-danger">Ocupado</span>
+                {% endif %}
+
+            </div>
+
+        </div>
+    </div>
+
+    {% empty %}
+        <p>Nenhum item cadastrado.</p>
+    {% endfor %}
+    </div>
+                    
+
+                    
 </main>
 
 {% endblock %}
@@ -24,3 +51,12 @@
     <small>&copy; 2026 - CheckPoint® </small>
 </div>
 {% endblock %}
+
+
+<!-- <div class="alert alert-success d-flex align-items-center" role="alert">
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h5 class="fw-bold">PC 04</h5>
+                            <p class="mb-2">🔴 Ocupado</p>
+                            <small>Em uso</small>
+                        </div>
+                    </div> -->

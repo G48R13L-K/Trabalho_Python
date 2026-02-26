@@ -7,7 +7,11 @@ from django.contrib import messages
 from django.http import HttpResponse
 
 def home(request):
-    return render(request, "checkpoint/home.html")
+    equipamentos = Equipamentos.objects.all()
+
+    return render(request, "checkpoint/home.html", {
+        "equipamentos": equipamentos
+    })
 
 def equipamentos(request):
     if request.method == "POST":
