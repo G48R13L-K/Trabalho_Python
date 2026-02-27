@@ -125,5 +125,5 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = "/static/"
 
 LOGIN_URL = '/admin/login/' # Onde o usuário faz login
-LOGIN_REDIRECT_URL = '/'   # Para onde ele vai depois de logar
-LOGOUT_REDIRECT_URL = '/admin/login/' # Para onde vai ao sair
+LOGIN_REDIRECT_URL = '/home_funcionario/'   # Para onde ele vai depois de logar
+LOGOUT_REDIRECT_URL = '/home/' # Para onde vai ao sair

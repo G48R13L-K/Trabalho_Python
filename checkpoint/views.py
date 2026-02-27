@@ -16,7 +16,7 @@ def home(request):
     return render(request, "checkpoint/home.html", {
         "equipamentos": equipamentos
     })
-
+@login_required
 def equipamentos(request):
     if request.method == "POST":
         nomeEquipamento = request.POST.get("nomeEquipamento")
@@ -27,7 +27,8 @@ def equipamentos(request):
         return redirect('itens_cadastro')
         
     return render(request, 'checkpoint/equipamentos.html')
-    
+
+@login_required   
 def editar_equipamento(request, id):
     equipamentos = Equipamentos.objects.get(id=id)
     if request.method == "POST":
@@ -68,7 +69,7 @@ def reservar(request, id):
     return render(request, "checkpoint/reservar.html", {
         "equipamento": equipamento
     })
-
+@login_required
 def excluir_equipamento(request, id):
     equipamento = Equipamentos.objects.get(id=id)
     if request.method == "POST":
@@ -83,6 +84,7 @@ def itens_cadastro(request):
     equipamentos = Equipamentos.objects.all()
     return render(request, "checkpoint/itens_cadastro.html", {"equipamentos": equipamentos})
 
+@login_required
 def listar_locacao(request):
     locacoes = Locacao.objects.all()
     return render(request, "checkpoint/listar_locacao.html", {"locacoes": locacoes})
@@ -93,7 +95,7 @@ def home_funcionario(request):
     return render(request, "checkpoint/home_funcionario.html")
 
 
-
+@login_required
 def encerrar_locacao(request, id):
     locacao = Locacao.objects.get(id=id)
     if request.method == "POST":
@@ -107,6 +109,6 @@ def encerrar_locacao(request, id):
 def logout_view(request):
     if request.method == "POST":
         logout(request)
-        return redirect('login')
+        return redirect('home')
     
     return redirect('home')
