@@ -25,6 +25,7 @@
 
                 {% if equipamento.status == "Disponivel" %}
                     <span class="badge bg-success">Disponível</span>
+                    <a href="/reservar/{{ equipamento.id }}" class="btn btn-outline-secondary btn-lg px-4">Reservar</a>
                 {% else %}
                     <span class="badge bg-danger">Ocupado</span>
                 {% endif %}

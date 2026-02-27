@@ -31,6 +31,6 @@ urlpatterns = [
     path('itens_cadastro/', itens_cadastro, name='itens_cadastro'),
     path('listar_locacao/', listar_locacao, name='listar_locacao'),
     path('home_funcionario/', home_funcionario, name='home_funcionario'),
-    path('reservar/', reservar, name='reservar'),
+    path('reservar/<int:id>/', reservar, name='reservar'),
     path('encerrar_locacao/<int:id>/', encerrar_locacao, name='encerrar_locacao'),
     ]

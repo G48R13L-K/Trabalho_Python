@@ -1,4 +1,3 @@
-
 {% extends "checkpoint/base.html" %}
 
 {% block content %}
@@ -7,35 +6,47 @@
     <div class="card-header bg-primary text-white">
         <h4 class="mb-0">Reservar Equipamento</h4>
     </div>
+
     <div class="card-body">
         <form method="POST">
             {% csrf_token %}
 
             <div class="mb-3">
                 <label class="form-label fw-bold">Equipamento:</label>
-                <select name="equipamento" class="form-select" required>
-                    <option value="">Selecione um equipamento</option>
-                    {% for equipamento in equipamentos %}
-                    <option value="{{ equipamento.id }}">{{ equipamento.nome }}</option>
-                    {% endfor %}
+                <input type="text" 
+                       name="nomeEquipamento" 
+                       class="form-control" 
+                       placeholder="Ex: PlayStation 5" 
+                       value="{{ equipamento.nomeEquipamento }}" 
+                       required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label fw-bold">Nome do Cliente:</label>
-                <input type="text" name="nomeCliente" class="form-control" placeholder="Ex: João Silva"
-                    required>
+                <input type="text" 
+                       name="nomeCliente" 
+                       class="form-control" 
+                       placeholder="Ex: João Silva"
+                       required>
             </div>
-            <div>
+
+            <div class="mb-3">
                 <label class="form-label fw-bold">CPF:</label>
-                <input type="text" name="cpfCliente" class="form-control" placeholder="Ex: 123.456.789-00"
-                    required>
+                <input type="text" 
+                       name="cpfCliente" 
+                       class="form-control" 
+                       placeholder="Ex: 123.456.789-00"
+                       required>
             </div>
 
             <div class="d-grid">
-                <button type="submit" class="btn btn-success btn-lg">Reservar</button>
+                <button type="submit" class="btn btn-success btn-lg">
+                    Reservar
+                </button>
             </div>
 
+        </form>
+    </div>
+</div>
 
-
-
-            {% endblock %}
+{% endblock %}
