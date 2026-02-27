@@ -3,7 +3,8 @@ from datetime import timezone
 from django.shortcuts import render, redirect
 from .models import Equipamentos, Locacao
 from django.contrib import messages
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 
 # Create your views here.
 from django.http import HttpResponse
@@ -85,8 +86,11 @@ def listar_locacao(request):
     locacoes = Locacao.objects.all()
     return render(request, "checkpoint/listar_locacao.html", {"locacoes": locacoes})
 
+@login_required
+@permission_required('checkpoint.view_home_funcionario', raise_exception=True) 
 def home_funcionario(request):
     return render(request, "checkpoint/home_funcionario.html")
+
 
 
 def encerrar_locacao(request, id):
