@@ -43,10 +43,58 @@
                 <button type="submit" class="btn btn-success btn-lg">
                     Reservar
                 </button>
+                
             </div>
 
         </form>
     </div>
 </div>
+
+{% if reserva_realizada %}
+
+<div class="modal fade show" id="modalSucesso" style="display:block;" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title">Reserva Realizada com Sucesso!</h5>
+      </div>
+
+      <div class="modal-body" id="areaImpressao">
+        <p><strong>Equipamento:</strong> {{ locacao.equipamento.nomeEquipamento }}</p>
+        <p><strong>Cliente:</strong> {{ locacao.nomeCliente }}</p>
+        <p><strong>CPF:</strong> {{ locacao.cpfCliente }}</p>
+        <p><strong>Data:</strong> {{ locacao.dataLocacao|date:"d/m/Y H:i" }}</p>
+      </div>
+
+      <div class="modal-footer">
+        <button onclick="imprimirReserva()" class="btn btn-primary">
+          Imprimir
+        </button>
+        <a href="{% url 'home' %}" class="btn btn-secondary">
+          Fechar
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop fade show"></div>
+
+{% endif %}
+
+<script>
+function imprimirReserva() {
+    var conteudo = document.getElementById('areaImpressao').innerHTML;
+    var telaImpressao = window.open('', '', 'width=600,height=600');
+    telaImpressao.document.write('<html><head><title>Reserva</title>');
+    telaImpressao.document.write('</head><body>');
+    telaImpressao.document.write(conteudo);
+    telaImpressao.document.write('</body></html>');
+    telaImpressao.document.close();
+    telaImpressao.print();
+}
+</script>
 
 {% endblock %}
