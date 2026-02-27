@@ -1,3 +1,5 @@
+from datetime import timezone
+
 from django.shortcuts import render, redirect
 from .models import Equipamentos, Locacao
 from django.contrib import messages
@@ -43,21 +45,27 @@ def reservar(request, id):
         nomeCliente = request.POST.get('nomeCliente')
         cpfCliente = request.POST.get('cpfCliente')
 
-        # Cria a locação
-        Locacao.objects.create(
+        locacao = Locacao.objects.create(
             equipamento=equipamento,
             nomeCliente=nomeCliente,
             cpfCliente=cpfCliente
+            
         )
 
-        # Atualiza status
         equipamento.status = 'Indisponivel'
         equipamento.save()
 
-        messages.success(request, "Equipamento reservado com sucesso!")
-        return redirect('home')
+        return render(request, "checkpoint/reservar.html", {
+            "equipamento": equipamento,
+            "reserva_realizada": True,
+            "locacao": locacao
+            
+            
+        })
 
-    return render(request, "checkpoint/reservar.html", {"equipamento": equipamento})
+    return render(request, "checkpoint/reservar.html", {
+        "equipamento": equipamento
+    })
 
 def excluir_equipamento(request, id):
     equipamento = Equipamentos.objects.get(id=id)
