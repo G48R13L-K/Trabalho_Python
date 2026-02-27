@@ -5,6 +5,7 @@ from .models import Equipamentos, Locacao
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
+from django.contrib.auth import logout
 
 # Create your views here.
 from django.http import HttpResponse
@@ -101,3 +102,11 @@ def encerrar_locacao(request, id):
         equipamento.save()
         messages.success(request,"Locação encerrada com sucesso!")
         return redirect('listar_locacao')
+    
+@login_required
+def logout_view(request):
+    if request.method == "POST":
+        logout(request)
+        return redirect('login')
+    
+    return redirect('home')

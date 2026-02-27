@@ -18,9 +18,15 @@
                         <a href="/itens_cadastro" class="btn btn-outline-secondary btn-lg px-4">Lista Equipamentos</a>
                         <a href="/equipamentos" class="btn btn-outline-secondary btn-lg px-4">Equipamentos</a>
                         <a href="/listar_locacao" class="btn btn-outline-secondary btn-lg px-4">Lista Locações</a>
-                        <a href="/home" class="btn btn-outline-secondary btn-lg px-4">Tela cliente</a>
-                            <a href="/reservar" class="btn btn-outline-secondary btn-lg px-4">Reservar Equipamento</a>
+                        <a href="/reservar" class="btn btn-outline-secondary btn-lg px-4">Reservar Equipamento</a>
+                        <form method="POST" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">
+                                Sair
+                            </button>
+                        </form>
                     </div>
+                    
                     </div>
 </main>
 
