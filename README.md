@@ -8,8 +8,8 @@ Integrantes - Daniel Maus, Gabriel Kappenberg e Lorenzzo Antinio Patatt.
 
 O projeto foi dividido de forma parelha, cada um com o objetivo principal. Fazer a aplicação funcionar
 
-Daniel: Funcionalidate entre as telas
-Gabriel: models, Banco de dados.
+Daniel: Funcionalidate entre as telas, 
+Gabriel: models, Banco de dados, 
 Lozenzzo: Personalização.
 
 Linguagens e suportes tecnicos:
