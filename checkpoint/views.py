@@ -2,6 +2,7 @@ from datetime import timezone
 
 from django.shortcuts import render, redirect
 from .models import Equipamentos, Locacao
+from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
@@ -10,7 +11,15 @@ from django.contrib.auth.decorators import permission_required
 from django.http import HttpResponse
 
 def home(request):
-    equipamentos = Equipamentos.objects.all()
+    query = request.GET.get('q')
+
+    if query:
+        equipamentos = Equipamentos.objects.filter(
+            Q(nomeEquipamento__icontains=query) |
+            Q(numeroEquipamento__icontains=query)
+        )
+    else:
+        equipamentos = Equipamentos.objects.all()
 
     return render(request, "checkpoint/home.html", {
         "equipamentos": equipamentos
